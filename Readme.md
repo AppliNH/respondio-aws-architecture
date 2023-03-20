@@ -1,6 +1,7 @@
 # AWS Architecture assessment for respond.io
 
 - [Assessment details are here](./ASSESSMENT.MD)
+- The architecture can be visualized using https://app.diagrams.net/ and [the drawio file](./architecture.drawio)
 
 ## Prerequistes
 
