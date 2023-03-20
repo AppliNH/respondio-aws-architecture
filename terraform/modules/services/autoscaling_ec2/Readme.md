@@ -1,6 +1,6 @@
 # `autoscaling_ec2` module
 
-Provisions an autoscaling EC2 group with custom and flexible parameters, using a placement group, and a security group.
+Provisions an autoscaling EC2 group with custom and flexible parameters, using a security group.
 
 ## Requirements
 
@@ -23,7 +23,6 @@ No modules.
 | [aws_autoscaling_group.vm_scale_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group)            | resource |
 | [aws_iam_instance_profile.vm_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_launch_template.vm_template](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template)                   | resource |
-| [aws_placement_group.vm_placement_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/placement_group)            | resource |
 | [aws_security_group.vm_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)                           | resource |
 
 ## Inputs

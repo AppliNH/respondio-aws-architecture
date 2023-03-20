@@ -9,10 +9,27 @@ locals {
 }
 
 # --- WebApp
+data "aws_ami" "webapp_ami" {
+  most_recent = true
+  owners      = ["self"]
+
+  filter {
+    name   = "name"
+    values = ["webapp-vm-image"]
+  }
+
+  filter {
+    name   = "stage"
+    values = ["PRD"]
+  }
+
+}
 
 module "webapp" {
-  stage  = local.stage
-  source = "../../applications/webapp"
+  stage         = local.stage
+  source        = "../../applications/webapp"
+  instance_type = "t3.small"
+  image_id      = data.aws_ami.webapp_ami.image_id
 
   db_name = local.webapp_db_dbname
 
@@ -48,12 +65,12 @@ module "webapp" {
 # --- Route53
 
 resource "aws_route53_zone" "webapp_zone" {
-  name = "webapp.sg"
+  name = "webapp.com"
 }
 
 resource "aws_route53_record" "webapp_alias" {
   zone_id = aws_route53_zone.webapp_zone.id
-  name    = "webapp.sg"
+  name    = "webapp.com"
   type    = "A"
   alias {
     name                   = module.webapp.elb.dns_name

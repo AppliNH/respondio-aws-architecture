@@ -96,8 +96,8 @@ module "webapp_s3_bucket" {
   source = "../../modules/services/s3_bucket"
 
   app_role_name = aws_iam_role.webapp_vm_role.name
-  stage         = "PRD"
-  context_name  = "webapp"
+  stage         = var.stage
+  context_name  = local.context_name
 
 }
 
@@ -144,11 +144,11 @@ module "webapp_autoscaling_group" {
 
   app_role_name = aws_iam_role.webapp_vm_role.name
 
-  stage        = "PRD"
-  context_name = "webapp"
-  image_id     = "ami-05bfef86a955a699e"
+  stage        = var.stage
+  context_name = local.context_name
+  image_id     = var.image_id
 
-  instance_type = "t3.small"
+  instance_type = var.instance_type
 
   vpc_id = module.webapp_networking.vpc.id
 

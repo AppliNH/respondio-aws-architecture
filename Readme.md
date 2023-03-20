@@ -1,48 +1,28 @@
 # AWS Architecture assessment for respond.io
 
-- [Assessment details are here](./ASSESSMENT.MD)
-- The architecture can be visualized using https://app.diagrams.net/ and [the drawio file](./architecture.drawio)
+- [Assessment details can be found here](./ASSESSMENT.md)
+- The architecture diagram can be visualized using https://app.diagrams.net/ and [this drawio file](./architecture.drawio)
+- [Architecture details can be found here](./architecture.md)
 
 ## Prerequistes
 
-- Install [Terraform](https://command-not-found.com/terraform)
-- [Get to know about Terraform](https://developer.hashicorp.com/terraform/intro)
+- Setup AWS Credentials
+  - .. under a profile named `terraform`
+- Install
+  - [Terraform](https://command-not-found.com/terraform)
+  - [Packer](https://command-not-found.com/Packer)
+- Get to know about
+  - [Terraform](https://developer.hashicorp.com/terraform/docs)
+  - [Packer](https://developer.hashicorp.com/packer/docs)
 
-## Use this project
+## Terraform project (`terraform/` dir)
 
-This project uses Terraform workspaces, and they are located in the `environments/` folder.
+Please have a look at the [Readme located here](./terraform/Readme.md).
 
-Each sub-folders is a workspace
+## Packer project (`packer/` dir)
 
-After cloning this project :
+Please have a look at the [Readme located here](./packer/Readme.md).
 
-- `cd environments/<workspace-dir-name>`
-- `terraform workspace new <workspace-dir-name>`
-- `terraform init`
-- and then you can run `terraform refresh`, `terraform plan` & `terraform apply` commands.
+## Author
 
-**Please note:** This project is a demo. Thus the tfstate file is not stored in a back-end (S3 bucket for eg).
-
-### Write documentation
-
-If you create/update new modules, please generate documentation with [`terraform-docs`](https://github.com/terraform-docs/terraform-docs).
-
-## Folders structure
-
-```
-├── applications <-- Applications infrastructure (also called applicative modules), may use multiple modules.
-│   ├── webapp
-├── environments <-- Terraform workspaces per deployment stage (environment), will use applicative modules.
-│   ├── webapp-prod <-- Terraform workspace
-├── modules <-- Custom modules (also called technical modules)
-│   ├── networking <-- Modules are separated per thematics.
-│   ├── policies
-│   ├── services
-│   │   ├── autoscaling_ec2 <-- Module.
-│   │   ├── mysql_db
-│   │   ├── s3_bucket
-```
-
-This folder approach allows to separate **"application-centric"** and **"technical-centric"** modules, for better reusability.
-
-A **application module** will use one or many **technical modules**, and will then be used for a specific environment in the `environments/` sub-folders, allowing to benefit of Terrafom workspaces.
+Thomas Martin (https://github.com/applinh)

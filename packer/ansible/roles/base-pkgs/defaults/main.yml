@@ -1,0 +1,8 @@
+base_pkgs:
+  - git
+  - apt-utils
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release

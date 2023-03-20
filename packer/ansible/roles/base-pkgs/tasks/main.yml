@@ -1,0 +1,9 @@
+---
+- include_tasks: update-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Install essential dependencies
+  ansible.builtin.package:
+    name: " {{ item }}"
+    state: present
+  with_items: "{{ base_pkgs }}"

@@ -25,18 +25,6 @@ resource "aws_security_group" "vm_sg" {
   }
 }
 
-resource "aws_placement_group" "vm_placement_group" {
-  name     = "${var.context_name}-vm-placement-group"
-  strategy = "partition"
-
-
-  tags = {
-    APP   = var.context_name
-    STAGE = var.stage
-  }
-}
-
-
 resource "aws_launch_template" "vm_template" {
   name_prefix   = "${var.context_name}-vm-"
   image_id      = var.image_id
@@ -67,7 +55,6 @@ resource "aws_autoscaling_group" "vm_scale_group" {
   health_check_type         = "ELB"
   desired_capacity          = var.sizes.desired_capacity
   force_delete              = true
-  placement_group           = aws_placement_group.vm_placement_group.id
   vpc_zone_identifier       = var.subnet_ids
 
 

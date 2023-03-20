@@ -38,3 +38,13 @@ variable "db_name" {
   type        = string
   description = "Name of the db."
 }
+
+variable "instance_type" {
+  type        = string
+  description = "Type of EC2 instance."
+}
+
+variable "image_id" {
+  type        = string
+  description = "ID of the image for the EC2 launch template."
+}

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: admin
+  become_method: sudo
+  become: true
+  vars:
+    service_bin: systemctl
+  roles:
+    - base-pkgs
+    - nginx
